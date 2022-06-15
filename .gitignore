@@ -1,0 +1,33 @@
+# IntelliJ
+.idea/
+out/
+*.ipr
+*.iml
+*.iws
+.jqwik-database
+
+# Visual Studio Code
+.vscode
+.factorypath
+
+# OSX
+.DS_Store
+
+# Gradle
+.gradle/
+build/
+
+# Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+release.properties
+
+# patch
+*.orig
+*.rej
+
+# Local ENV
+*local.*
+.env
