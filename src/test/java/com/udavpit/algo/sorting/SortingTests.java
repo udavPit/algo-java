@@ -4,8 +4,6 @@ import net.jqwik.api.ForAll;
 import net.jqwik.api.Property;
 import net.jqwik.api.constraints.Size;
 import net.jqwik.api.lifecycle.BeforeContainer;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
@@ -15,6 +13,7 @@ public class SortingTests {
     private static Sorter<Integer> insertionSorter;
     private static Sorter<Integer> mergeSorter;
     private static Sorter<Integer> buMergeSorter;
+    private static Sorter<Integer> quickSorter;
 
     @BeforeContainer
     static void init() {
@@ -22,6 +21,7 @@ public class SortingTests {
         insertionSorter = SorterFactory.createInsertionSorter();
         mergeSorter = SorterFactory.createMergeSorter();
         buMergeSorter = SorterFactory.createBUMergeSorter();
+        quickSorter = SorterFactory.createQuickSort();
     }
 
     @Property
@@ -40,8 +40,13 @@ public class SortingTests {
     }
 
     @Property
-    boolean bottomUpMergeSortOfIntArray(@ForAll @Size(max = 1000) Integer[] array) {
+    boolean bottomUpMergeSortIntArray(@ForAll @Size(max = 1000) Integer[] array) {
         return sortIntArrayProperty(array, buMergeSorter);
+    }
+
+    @Property
+    boolean quickSortIntArray(@ForAll @Size(max = 1000) Integer[] array) {
+        return sortIntArrayProperty(array, quickSorter);
     }
 
     private <T extends Comparable<T>> boolean sortIntArrayProperty(T[] array, Sorter<T> sorter) {

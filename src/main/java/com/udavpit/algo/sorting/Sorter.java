@@ -23,6 +23,10 @@ public interface Sorter<T extends Comparable<T>> {
         return array[i].compareTo(array[j]) < 0;
     }
 
+    default boolean lessOrEq(T[] array, int i, int j) {
+        return array[i].compareTo(array[j]) <= 0;
+    }
+
     default void run(T[] array) {
         show(array);
         sort(array);

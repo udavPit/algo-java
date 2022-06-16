@@ -17,4 +17,8 @@ public class SorterFactory {
     public static Sorter<Integer> createBUMergeSorter() {
         return new BottomUpMergeSort<>();
     }
+
+    public static Sorter<Integer> createQuickSort() {
+        return new QuickSort<>();
+    }
 }
